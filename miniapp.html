@@ -23,8 +23,11 @@
     (async () => {
         await window.Warroom.init({ appType:'taskpane', appId: '117454667' })
         document.getElementById('status').innerHTML = '<span class="badge rounded-pill bg-success">Ready</span>'
+
+        // (GET) Step 1: call methods to get informantion from WARROOM
         const currentThread = await window.Warroom.getCurrentThread()
 
+        // (EVENT) Step 1: call methods to listen event from WARROOM
         window.Warroom.onCloseCase((d) => {
             console.log(d)
         })

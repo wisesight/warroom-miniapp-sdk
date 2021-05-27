@@ -34,6 +34,7 @@
     }
     
     function closeCase (threadId) {
+        // (EVENT) Step 2: Send message to Mini App when event happen
         setMessageToMiniApp('send:case:on-close-case',{ threadId: threadId })
     }
 
@@ -45,7 +46,7 @@
                     setMessageToMiniApp('response-to:status:init',{time: new Date()})
                     break;
                 case 'get:current-thead':
-                    // (GET) Step 2: Recieve event and send back the information to Mini App
+                    // (GET) Step 3: Recieve event and send back the information to Mini App
                     setMessageToMiniApp('response-to:get:current-thead',{threadId: 11111})
                     break;
                 default:

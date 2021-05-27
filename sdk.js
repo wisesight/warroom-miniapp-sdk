@@ -21,10 +21,11 @@ class Warroom {
                     document.dispatchEvent(new CustomEvent("warroom-miniapp:status:init", { detail: event.data.payload }));
                     break;
                 case 'response-to:get:current-thead':
-                    // (GET) Step 3: Recieve message from WARROOM and create event for Mini App
+                    // (GET) Step 4: Recieve message from WARROOM and create event for Mini App
                     document.dispatchEvent(new CustomEvent("warroom-miniapp:get:current-thead", { detail: event.data.payload }));
                     break;
                 case 'send:case:on-close-case':
+                        // (EVENT) Step 3: Recieve message from WARROOM and create event for Mini App
                         document.dispatchEvent(new CustomEvent("warroom-miniapp:case:on-close-case", { detail: event.data.payload }));
                         break;
                 default:
@@ -63,22 +64,23 @@ class Warroom {
         }
     }
 
-    // Example of get WARROOM information (GET)
+    // Example of get WARROOM information method (GET)
     getCurrentThread () {
-        // (GET) Step 1: send message to WARROOM to request a data
+        // (GET) Step 2: send message to WARROOM to request a data
         this.postMessageToParent('get:current-thead')
 
         return new Promise ((resolve, reject) => {
-            // (GET) Step 4: Listen internal event and return as a promise
+            // (GET) Step 5: Listen internal event and return as a promise
             document.addEventListener('warroom-miniapp:get:current-thead', (e) => {
                 resolve(e.detail)
             }, false);
         })
     }
 
-    // Event listen from WARROOM
+    // Example of WARROOM event methods (EVENT)
 
     onCloseCase (cb) {
+        // (EVENT) Step 4: Listen internal event and return as a callback
         document.addEventListener('warroom-miniapp:case:on-close-case', (e) => {
             cb(e.detail)
         }, false);

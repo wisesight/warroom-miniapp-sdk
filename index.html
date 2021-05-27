@@ -32,9 +32,9 @@
     function setMessageToMiniApp (eventName, payload) {
         document.getElementById('mini-app').contentWindow.postMessage({'provider': 'warroom', event: eventName, payload:payload },'*');
     }
-
+    
     function closeCase (threadId) {
-        setMessageToMiniApp('send:on-close-case',{ threadId: threadId })
+        setMessageToMiniApp('send:case:on-close-case',{ threadId: threadId })
     }
 
     window.addEventListener("message", (event) => {
@@ -45,6 +45,7 @@
                     setMessageToMiniApp('response-to:status:init',{time: new Date()})
                     break;
                 case 'get:current-thead':
+                    // (GET) Step 2: Recieve event and send back the information to Mini App
                     setMessageToMiniApp('response-to:get:current-thead',{threadId: 11111})
                     break;
                 default:

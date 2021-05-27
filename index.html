@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #mini-app{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-light" onclick="closeCase(111123244432)">Close case</button>
+          </div>
+          <div class="col-3">
+            <iframe src="miniapp.html" id="mini-app"></iframe>
+          </div>
+        </div>
+      </div>
+
+    
+</body>
+<script>
+
+    function setMessageToMiniApp (eventName, payload) {
+        document.getElementById('mini-app').contentWindow.postMessage({'provider': 'warroom', event: eventName, payload:payload },'*');
+    }
+
+    function closeCase (threadId) {
+        setMessageToMiniApp('send:on-close-case',{ threadId: threadId })
+    }
+
+    window.addEventListener("message", (event) => {
+        if('warroom-miniapp-type' in event.data) {
+            console.log('[WARROOM]',event.data)
+            switch(event.data.event) {
+                case 'status:init':
+                    setMessageToMiniApp('response-to:status:init',{time: new Date()})
+                    break;
+                case 'get:current-thead':
+                    setMessageToMiniApp('response-to:get:current-thead',{threadId: 11111})
+                    break;
+                default:
+            }
+        }
+    }, false);
+</script>
+</html>

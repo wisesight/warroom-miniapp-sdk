@@ -25,10 +25,65 @@
         document.getElementById('status').innerHTML = '<span class="badge rounded-pill bg-success">Ready</span>'
 
         // (GET) Step 1: call methods to get informantion from WARROOM
+        const clientInformation = await window.Warroom.getClientInformation()
+        
+        const currentSubject = await window.Warroom.getSubject()
+
+        const currentAgent = await window.Warroom.getCurrentAgent()
+
         const currentThread = await window.Warroom.getCurrentThread()
 
+        const currentCase = await window.Warroom.getCurrentCase()
+
+        const currentUser = await window.Warroom.getCurrentUser()
+
+        const focusedPost = await window.Warroom.getFocusedPost()
+
+        // (COMMAND) 
+        await window.Warroom.sendMessage({text: 'I love you'})
+
+        await window.Warroom.resize({size: 'full' }) // 'half','full','taskpane'
+
+        await window.Warroom.closeMiniApp()
+
         // (EVENT) Step 1: call methods to listen event from WARROOM
+        window.Warroom.onNewCase((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onFocusChanged((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onAssignedCase((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onReply((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onReplyFormChange((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onTagged((d) => {
+            console.log(d)
+        })
+
         window.Warroom.onCloseCase((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onFilterChanged((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onAgentStatusChanged((d) => {
+            console.log(d)
+        })
+
+        window.Warroom.onRefreshThread((d) => {
             console.log(d)
         })
 

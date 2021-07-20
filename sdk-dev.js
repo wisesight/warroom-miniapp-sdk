@@ -20,6 +20,7 @@ class Warroom {
 
     // Handle method when WARROOM send message back to Mini App
     handleMessageFromWarroom (event) {
+        console.log(event.data);
         if(event.data.provider === 'warroom') {
 
             if (event.data.token !== this.token || this.token === "") {
@@ -46,9 +47,10 @@ class Warroom {
         }
     }
 
-    init ({appType, appId}) {
-        window.addEventListener('message', this.handleMessageFromWarroom.bind(this), false);
+    init ({appType, appId, appToken}) {
         this.appType = appType
+        this.token = appToken
+        window.addEventListener('message', this.handleMessageFromWarroom.bind(this), false);
         this.postMessageToParent('status:init', new Date())
         return new Promise ((resolve,reject) => {
 
@@ -57,11 +59,11 @@ class Warroom {
             }
 
             document.addEventListener('warroom-miniapp:status:init', (e) => {
-                // Get recieve from warroom  Verify token with end point
-                
+
+                // Get recieve from warroom  Verify token with endpoint
                 if(true) {
                     // Save token when valid
-                    this.token = "abcdefg"
+                    this.token = appToken
                     resolve(true)
                 }
 
@@ -92,6 +94,10 @@ class Warroom {
                 resolve(e.detail)
             }, false);
         })
+    }
+
+    getClientInformation () {
+        return "ID 70 blah blah blah"
     }
 
     // Example of WARROOM event methods (EVENT)

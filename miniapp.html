@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>Document</title>
-    <script src="sdk.js"></script>
+    <script src="sdk-dev.js"></script>
 </head>
 <style>
     body {
@@ -17,15 +17,16 @@
 <body>
     <h4>This is warroom mini app </h4>
     <p>Status: <span id="status"></span></p>
+    <p>Client Information: <span id="client-information"></span></p>
 </body>
 <script>
-    
     (async () => {
-        await window.Warroom.init({ appType:'taskpane', appId: '117454667' })
+        await window.Warroom.init({ appType:'taskpane', appId: '117454667', appToken: 'sunnysunToken' })
         document.getElementById('status').innerHTML = '<span class="badge rounded-pill bg-success">Ready</span>'
 
         // (GET) Step 1: call methods to get informantion from WARROOM
         const clientInformation = await window.Warroom.getClientInformation()
+        document.getElementById('client-information').innerHTML = clientInformation
         
         const currentSubject = await window.Warroom.getSubject()
 
@@ -72,6 +73,7 @@
         })
 
         window.Warroom.onCloseCase((d) => {
+            alert(d);
             console.log(d)
         })
 

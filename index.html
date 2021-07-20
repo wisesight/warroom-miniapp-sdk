@@ -28,9 +28,9 @@
     
 </body>
 <script>
-
+    const token = 'sunnysunToken'
     function setMessageToMiniApp (eventName, payload) {
-        document.getElementById('mini-app').contentWindow.postMessage({'provider': 'warroom', event: eventName, payload:payload },'*');
+        document.getElementById('mini-app').contentWindow.postMessage({'provider': 'warroom', event: eventName, payload:payload, token: token },'*');
     }
     
     function closeCase (threadId) {

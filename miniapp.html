@@ -38,6 +38,8 @@
         const currentUser = await window.Warroom.getCurrentUser()
 
         const focusedPost = await window.Warroom.getFocusedPost()
+        
+        const userCaseHistory = await window.Warroom.getUserCaseHistory()
 
         // (COMMAND) 
         await window.Warroom.sendMessage({text: 'I love you'})

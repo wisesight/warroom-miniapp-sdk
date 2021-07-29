@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>WARROOM - Mini App DevTool</title>
+    <style>
+        #mini-app{
+            height: 100vh;
+        }
+        .card{
+            margin-bottom: 10px;
+        }
+        #mini-app-container > iframe {
+            width: 100%;
+        }
+        #mini-app-container{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Warroom</h1>
+            <hr>
+            <div class="mb-3 row">
+            <label for="miniapp-url" class="col-sm-2 col-form-label"><strong>Mini App URL</strong></label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="miniapp-url" value="/miniapp">
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary mb-3" id="load-miniapp">Load Mini App</button>
+            </div>
+            </div>
+            <h3>Post</h3>
+            <div class="card" id="focusPost">
+                <div class="card-body" onclick="onFocusPost(0)" style="cursor: pointer;">
+                    <h6><img height="64" width="64" src="https://pbs.twimg.com/profile_images/943136793771175936/Ehj3eIBY_400x400.jpg" style="border-radius: 10%;"> Green Curry</h6>
+                    <p><b>Message</b> ทดลองอัพรูปหลายรูปๆ ดูซิจะเป็นยังไง</p>
+                </div>
+            </div>
+            <div class="card" id="focusPost">
+                <div class="card-body" onclick="onFocusPost(1)" style="cursor: pointer;">
+                    <h6><img height="64" width="64" src="https://pbs.twimg.com/profile_images/1112848027050565633/G0F2EtMn_400x400.jpg" style="border-radius: 10%;"></img> Elon Curry</h6>
+                    <p><b>Message</b> นี่ผมสงสัยว่าเหรียญมันขึ้นเอง หรือเพราะแกงเขียวหวานร้านผมมันอร่อย</p>
+                </div>
+            </div>
+            <h3>Case Actions</h3>
+            <div class="card">
+                <div class="card-body">
+                    <p>Case A</p>
+                    <p>
+                        <button class="btn btn-danger btn-sm" onclick="closeCase(0)">Close case</button> 
+                        <button class="btn btn-warning btn-sm" onclick="assignCase(0)">Assigned case</button>
+                        <button class="btn btn-success btn-sm" onclick="newCase(0)">New case</button>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p>Case B</p>
+                    <p>
+                        <button class="btn btn-danger btn-sm" onclick="closeCase(1)">Close case</button> 
+                        <button class="btn btn-warning btn-sm" onclick="assignCase(1)">Assigned case</button>
+                        <button class="btn btn-success btn-sm" onclick="newCase(1)">New case</button>
+                    </p>
+                </div>
+            </div>
+            <h3>Tag Message</h3>
+            <p><button class="btn btn-outline-info btn-sm" onclick="tagMessage('Service')">Service</button> <button class="btn btn-outline-info btn-sm" onclick="tagMessage('Complain')">Complain</button></p>
+            <h3>Reply</h3>
+            <p>
+                <textarea class="form-control" id="reply-text" onchange="formChange()"></textarea>
+                <p><button class="btn btn-success btn-sm" onclick="reply()">Reply</button></p>
+            </p>
+            <h3>Agent Status</h3>
+            <p>
+                <button class="btn btn-outline-success btn-sm" onclick="changeAgentStatus('online')">Online</button> 
+                <button class="btn btn-outline-danger btn-sm" onclick="changeAgentStatus('offline')">Offline</button>
+            </p>
+            <h3>Other</h3>
+            <p>
+                <button class="btn btn-light btn-sm" onclick="filterChanged()">Change Filter</button> 
+                <button class="btn btn-light btn-sm" onclick="refreshThread()">Refresh Thread</button>
+            </p>
+          </div>
+          <div class="col-3 border-start" id="mini-app-container">
+            <span class="badge rounded-pill bg-warning text-dark">Click load mini App to initial</span>
+          </div>
+        </div>
+      </div>
+      <script src="/warroom.js"></script>    
+</body>
+
+</html>

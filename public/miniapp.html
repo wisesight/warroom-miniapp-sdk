@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Document</title>
+    <title>WARROOM - Mini App Example</title>
     <script src="/sdk.js"></script>
 </head>
 <style>
@@ -15,7 +15,7 @@
     }
     #debug-information{
         font-size: 9px;
-        height: 150px;
+        height: 300px;
         overflow-y: scroll;
     }
     .response{
@@ -30,117 +30,25 @@
 
     </div>
     <h3>Waroom Data</h3>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-client">Retrive Client Information</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-subject">Retrive Subject Information</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-current-agent">Retrive Current Agent Information</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-current-thread">Retrive Current Thread</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-current-case">Retrive Current Case</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-current-user">Retrive Current User (Social network)</button></p>
-    <p><button class="btn btn-outline-dark btn-sm" id="get-focus-post">Retrive Focused Post</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-client">Retrieve Client Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-subject">Retrieve Subject Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-agent">Retrieve Current Agent Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-thread">Retrieve Current Thread</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-case">Retrieve Current Case</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-user">Retrieve Current User (Social network)</button></p>
     <p><button class="btn btn-outline-dark btn-sm" id="get-user-case-history">Retrieve Current Case History</button></p>
+
+    <h3>
+        Set reply message
+    </h3>
+    <p><textarea class="form-control" id="reply-text"></textarea></p>
+    <p><button class="btn btn-success btn-sm" onclick="setMessage()">Set message</button></p>
+
     <h3>Control</h3>
-    <p><button class="btn btn-sm btn-info">Taskpane</button> <button class="btn btn-sm btn-warning">Half</button> <button class="btn btn-sm btn-success">Full</button> <button class="btn btn-sm btn-danger">Close</button></p>
+    <p><button class="btn btn-sm btn-info" onclick="resizeMiniApp('taskpane')">Taskpane</button> <button class="btn btn-sm btn-warning" onclick="resizeMiniApp('half')">Half</button> <button class="btn btn-sm btn-danger" onclick="resizeMiniApp('close')">Close</button></p>
+    <script src="/miniapp.js"></script>    
 </body>
 <script>
-    
-    function appendResponse (text) {
-        document.getElementById('debug-information').insertAdjacentHTML( 'afterbegin', `<strong>${ new Date().toString()}</strong><div class="response">${JSON.stringify(text, null, '\t')}</div>` );
-    };
-
-    (async () => {
-        applicationStatus = await window.Warroom.init({ appType:'taskpane', appId: '117454667' })
-        document.getElementById('status').innerHTML = '<span class="badge rounded-pill bg-success">Ready</span>'
-
-        document.getElementById('get-client').addEventListener('click', async (e) => {
-            const clientInformation = await window.Warroom.getClientInformation()
-            appendResponse(clientInformation)
-        })    
-        
-        document.getElementById('get-subject').addEventListener('click', async (e) => {
-            const currentSubject = await window.Warroom.getSubject()
-            appendResponse(currentSubject)
-        })    
-        
-
-        document.getElementById('get-current-agent').addEventListener('click', async (e) => {
-            const currentAgent = await window.Warroom.getCurrentAgent()
-            appendResponse(currentAgent)
-        })    
-
-        document.getElementById('get-current-thread').addEventListener('click', async (e) => {
-            const currentThread = await window.Warroom.getCurrentThread()
-            appendResponse(currentThread)
-        })    
-
-        document.getElementById('get-current-case').addEventListener('click', async (e) => {
-            const currentCase = await window.Warroom.getCurrentCase()
-            appendResponse(currentCase)
-        })    
-
-        document.getElementById('get-current-user').addEventListener('click', async (e) => {
-            const currentUser = await window.Warroom.getCurrentUser()
-            appendResponse(currentUser)
-        })    
-
-        document.getElementById('get-focus-post').addEventListener('click', async (e) => {
-            const focusedPost = await window.Warroom.getFocusedPost()
-            appendResponse(focusedPost)
-        })    
-
-        document.getElementById('get-user-case-history').addEventListener('click', async (e) => {
-            const userCaseHistory = await window.Warroom.getUserCaseHistory({socialIdList: ["wisesightofficial", "wisesighttwitter", "w!s3zight"]})
-            appendResponse(userCaseHistory)
-        })    
-
-        // // (COMMAND) 
-        // await window.Warroom.sendMessage({text: 'I love you'})
-
-        // await window.Warroom.resize({size: 'full' }) // 'half','full','taskpane'
-
-        // await window.Warroom.closeMiniApp()
-
-        // // (EVENT) Step 1: call methods to listen event from WARROOM
-        // window.Warroom.onNewCase((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onFocusChanged((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onAssignedCase((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onReply((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onReplyFormChange((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onTagged((d) => {
-        //     console.log(d)
-        // })
-
-        window.Warroom.onCloseCase((d) => {
-            appendResponse(d)
-        })
-
-        // window.Warroom.onFilterChanged((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onAgentStatusChanged((d) => {
-        //     console.log(d)
-        // })
-
-        // window.Warroom.onRefreshThread((d) => {
-        //     console.log(d)
-        // })
-
-    })()
 
 </script>
 </html>

@@ -5,8 +5,9 @@ class Warroom {
         this.token = ""
         this.isReady = false
         this.appId = ""
-        // Replace this for production 
-        this.verifyUrl = '/verify-token'
+        this.urlParams = new URLSearchParams(window.location.search);
+        this.mode = this.urlParams.get('mode');
+        this.verifyUrl = ""
     }
     
     postMessageToParent (eventName, payload) {
@@ -17,6 +18,10 @@ class Warroom {
         }
     }
 
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     handleMessageFromWarroom (event) {
 
         if(event.data.provider === 'warroom') {
@@ -24,32 +29,13 @@ class Warroom {
             if ((event.data.token !== this.token || this.token === "") && event.data.event !== 'response-to:status:init') {
                 throw Error('Authentication is not valid please init app before use')
             } else {
-                switch(event.data.event) {
-                    
-                    case 'response-to:status:init':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:status:init", { detail: event.data.payload }));
-                        break;
-                    case 'response-to:get:current-thread':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:get:current-thread", { detail: event.data.payload }));
-                        break;
-                    case 'response-to:get:client-information':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:get:client-information", { detail: event.data.payload }));
-                        break;
-                    case 'response-to:get:subject':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:get:subject", { detail: event.data.payload }));
-                        break;
-                    case 'response-to:get:user-case-history':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:get:user-case-history", { detail: event.data.payload }));
-                        break;
-                    case 'response-to:send:on-close-case':
-                        document.dispatchEvent(new CustomEvent("warroom-miniapp:send:on-close-case", { detail: event.data.payload }));
-                        break;
-                    default:
-                        
-                }
-            }
 
-            console.log('[MINI APP]',event.data)
+                const eventName = event.data.event.replace('response-to','warroom-miniapp')
+                document.dispatchEvent(new CustomEvent(eventName, { detail: event.data.payload }));
+            }
+            if(this.mode !== 'production') {
+                console.info('[MINI APP]',event.data)
+            }
         }
     }
 
@@ -57,20 +43,27 @@ class Warroom {
         window.addEventListener('message', this.handleMessageFromWarroom.bind(this));
         this.appType = appType
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get('token');
+        const token = this.urlParams.get('token');
         
-        const verifyRespone = await fetch(this.verifyUrl,
-        {
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({token: this.token, appId: appId})
-        })
+        if(this.mode === 'production') {
+            const verifyRespone = await fetch(this.verifyUrl,
+                {
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+                    body: JSON.stringify({token: this.token, appId: appId})
+                })
+        
+                if(verifyRespone.status === 200) {
+                    this.appId = appId
+                    this.token = token
+                }
+        }
 
-        if(verifyRespone.status === 200) {
+        if(this.mode === 'devtool') {
+            await this.sleep(3000)
             this.appId = appId
             this.token = token
         }
@@ -101,7 +94,7 @@ class Warroom {
         this.postMessageToParent('control:resize', {size: size})
     }
 
-    async getClientInformation () {
+    getClientInformation () {
         return this.getMethodInterface('client-information')
     }
 
@@ -113,7 +106,7 @@ class Warroom {
         return this.getMethodInterface('current-agent')
     }
 
-    async getCurrentThread () {
+    getCurrentThread () {
         return this.getMethodInterface('current-thread')
     }
 
@@ -125,16 +118,52 @@ class Warroom {
         return this.getMethodInterface('current-user')
     }
 
-    getFocusedPost () {
-        return this.getMethodInterface('focused-post')
-    }
-
-    async getUserCaseHistory (payload) {
+    getUserCaseHistory (payload) {
         return this.getMethodInterface('user-case-history', payload)
     }
 
     onCloseCase (cb) {
         this.eventMethodInterface('send:on-close-case',cb)
+    }
+
+    onNewCase (cb) {
+        this.eventMethodInterface('send:on-new-case',cb)
+    }
+
+    onAssignedCase (cb) {
+        this.eventMethodInterface('send:on-assigned-case',cb)
+    }
+
+    onReply (cb) {
+        this.eventMethodInterface('send:on-reply',cb)
+    }
+
+    onReplyFormChange (cb) {
+        this.eventMethodInterface('send:on-form-change',cb)
+    }
+
+    onTagged (cb) {
+        this.eventMethodInterface('send:on-tag-message',cb)
+    }
+
+    onFilterChanged (cb) {
+        this.eventMethodInterface('send:agent-filter-changed',cb)
+    }
+
+    onAgentStatusChanged (cb) {
+        this.eventMethodInterface('send:agent-status-changed',cb)
+    }
+
+    onRefreshThread (cb) {
+        this.eventMethodInterface('send:agent-refresh-thread',cb)
+    }
+
+    onFocusPost (payload) {
+        this.eventMethodInterface('send:on-focus-post', payload)
+    }
+
+    setReplyMessage (payload) {
+        this.postMessageToParent('send:set-reply-message', payload)
     }
 
     eventMethodInterface (eventName,cb) {
@@ -156,4 +185,4 @@ class Warroom {
 
 }
 
-window.Warroom = new Warroom();
+const warroom = new Warroom

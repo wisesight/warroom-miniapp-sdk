@@ -1,0 +1,15 @@
+{
+  "name": "warrroom-miniapp-sdk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/wisesight/warrroom-miniapp-sdk.git",
+  "author": "Best <suthidham.k@wisesight.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}

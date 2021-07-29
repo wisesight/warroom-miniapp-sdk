@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #mini-app{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-light" onclick="closeCase(111123244432)">Close case</button>
+          </div>
+          <div class="col-3" id="mini-app-container">
+              Loading.....
+          </div>
+        </div>
+      </div>
+
+    
+</body>
+<script>
+
+    window.addEventListener('load', () => {
+        document.getElementById('mini-app-container').innerHTML = '<iframe id="mini-app" src="/miniapp?token=qJEygxRKWlrmgdpOOFuxaNH3k6hZeNl76TFN0hGx"></iframe>'
+    })
+
+    function setMessageToMiniApp (eventName, payload) {
+        document.getElementById('mini-app').contentWindow.postMessage({'provider': 'warroom', event: eventName, payload:payload, token: 'qJEygxRKWlrmgdpOOFuxaNH3k6hZeNl76TFN0hGx' },'*');
+    }
+    
+    function closeCase (threadId) {
+        setMessageToMiniApp('response-to:send:on-close-case',{ threadId: threadId })
+    }
+
+    window.addEventListener("message", (event) => {
+        if('warroom-miniapp-type' in event.data) {
+            console.log('[WARROOM]',event.data)
+            switch(event.data.event) {
+                case 'status:init':
+                    setMessageToMiniApp('response-to:status:init',{time: new Date()})
+                    break;
+                case 'get:current-thread':
+                    setMessageToMiniApp('response-to:get:current-thread',mockedData.thread)
+                    break;
+                case 'get:client-information':
+                    setMessageToMiniApp('response-to:get:client-information',mockedData.client)
+                    break;
+                case 'get:subject':
+                    setMessageToMiniApp('response-to:get:subject',mockedData.subject)
+                    break;
+                case 'get:user-case-history':
+                    setMessageToMiniApp('response-to:get:user-case-history',{caseHistory: [{case: 1}, {case: 2}]})
+                    break
+                default:
+            }
+        }
+    }, false);
+    
+    let mockedData = {client:{client_id:70,client_name:"Demo"},subject:{subject_id:11236,subject_name:"Green Curry (Comment Page)",subject_client_id:70,subject_type:"facebook",subject_facebook_id:"503815916439094"},thread:{thread_id:30957229,thread_type:"Facebook",thread_identity_id:"503815916439094_1754472711373402",thread_subject_id:11236,thread_client_id:70},user:{user_id:24,user_name:"Green Curry",user_profile_picture:"https://s3-ap-southeast-1.amazonaws.com/warroom-sg/2a092c4d324951c3e3380579091b3ca5.jpg",user_employee_id:"User_01",user_client_id:70},post:{post_id:2208025060,post_date:"2021-03-29 17:30:19",thread_id:30957229,post_type:"fb_comment",post_author_name:"Natthapong Somboonphattarakit",post_body:"สอบทด",post_identity_id:"1754472711373402_1980334488787222",post_comment_no:"2.00000",post_client_id:70,post_subject_id:11236},case:{post_id:2208025060,client_id:70,subject_id:11236,thread_id:30957229,social_identity_id:"1754472711373402_1980334488787222",channel:"Facebook",sentiment:"neutral",meta:{},current_case_audit_id:"67087208_new_1617013826925",post_at:"2021-03-29T10:30:19.000Z",status:"New",action:"Mark as Case",action_at:"2021-03-29T10:30:26.924Z",action_comment:null,action_by_user_id:null,owner_id:null,post_body:"สอบทด",external_link:"https://www.facebook.com/1980334488787222",total_comment:2,sla_start_at:"2021-03-29T10:30:19.000Z",total_engagement:0,tags:[],author_name:"Natthapong Somboonphattarakit",author_social_id:"3417661834951760",external_id:"",reasons:[],score:0}};
+</script>
+</html>

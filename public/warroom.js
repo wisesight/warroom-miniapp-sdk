@@ -26,6 +26,7 @@ async function loadMiniApp(){
     document.getElementById('mini-app-container').innerHTML = `<div id="loading" class="spinner-grow text-secondary" role="status" style="margin-top: 30px;">
     <span class="visually-hidden">Loading...</span>
   </div><iframe id="mini-app" style="display:none;" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`
+   resizeMiniApp('taskpane');
 }
 
 async function setMessageToMiniApp (eventName, payload) {
@@ -92,7 +93,7 @@ function resizeMiniApp (size) {
     } else if(size === 'taskpane') {
         miniAppContainer.classList.add("col-3")
     } else if (size === 'close') {
-        miniAppContainer.removeChild(miniAppContainer.childNodes[0])
+        miniAppContainer.removeChild(miniAppContainer.childNodes[1])
     }
 }
 

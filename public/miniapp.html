@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>WARROOM - Mini App Example</title>
+    <script src="/sdk.js"></script>
+</head>
+<style>
+    body {
+        background: #eee;
+        padding: 10px;
+    }
+    #debug-information{
+        font-size: 11px;
+        height: 300px;
+        overflow-y: scroll;
+    }
+    .response{
+        margin-bottom: 10px;
+        word-wrap: break-word;
+    }
+</style>
+<body>
+    <h4>This is warroom mini app </h4>
+    <p>Status: <span id="status"></span></p>
+    <div id="debug-information">
+
+    </div>
+    <h3>Waroom Data</h3>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-client">Retrieve Client Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-subject">Retrieve Subject Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-agent">Retrieve Current Agent Information</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-thread">Retrieve Current Thread</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-case">Retrieve Current Case</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-current-user">Retrieve Current User</button></p>
+    <p><button class="btn btn-outline-dark btn-sm" id="get-user-case-history">Retrieve Current Case History</button></p>
+
+    <h3>
+        Set reply message
+    </h3>
+    <p><textarea class="form-control" id="reply-text"></textarea></p>
+    <p><button class="btn btn-success btn-sm" onclick="setMessage()">Set message</button></p>
+
+    <h3>Control</h3> 
+    <p><button class="btn btn-sm btn-info" onclick="resizeMiniApp('taskpane')">Taskpane</button> <button class="btn btn-sm btn-warning" onclick="resizeMiniApp('half')">Half</button> <button class="btn btn-sm btn-danger" onclick="resizeMiniApp('close')">Close</button></p>
+    <script src="/miniapp.js"></script>    
+</body>
+<script>
+
+</script>
+</html>

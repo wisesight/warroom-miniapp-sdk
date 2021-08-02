@@ -1,4 +1,4 @@
-# Mini App SDK
+# Waroom Mini App SDK
 
 ## Development tools
 

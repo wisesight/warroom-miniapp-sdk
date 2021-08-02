@@ -81,10 +81,11 @@ function refreshThread (staus) {
 
 function resizeMiniApp (size) {
     const miniAppContainer = document.getElementById('mini-app-container')
-    miniAppContainer.classList.remove("col-3")
-    miniAppContainer.classList.remove("col-6")
-    miniAppContainer.classList.remove("col-11")
-    console.log(size)
+    if (size !== 'close') {
+        miniAppContainer.classList.remove("col-3")
+        miniAppContainer.classList.remove("col-6")
+        miniAppContainer.classList.remove("col-11")
+    }
     if(size === 'full') {
         miniAppContainer.classList.add("col-11")
     } else if(size === 'half') {

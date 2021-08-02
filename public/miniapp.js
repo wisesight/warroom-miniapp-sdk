@@ -1,12 +1,14 @@
-    function appendResponse (text) {
-        document.getElementById('debug-information').insertAdjacentHTML( 'afterbegin', `<strong>${ new Date().toString()}</strong><div class="response">${JSON.stringify(text, null, '\t')}</div><hr>` );
+    function appendResponse (text, method) {
+        document.getElementById('debug-information').insertAdjacentHTML( 'afterbegin', `<strong>${ new Date().toString()}</strong> <p><span class="badge bg-primary">${method}</span></p> <div class="response">${JSON.stringify(text, null, '\t')}</div><hr>` );
     };
 
     async function setMessage () {
+        appendResponse({ text: document.getElementById('reply-text').value }, 'setReplyMessage()')
         await warroom.setReplyMessage({ text: document.getElementById('reply-text').value })
     }
 
     async function resizeMiniApp (size) {
+        appendResponse(size, 'resize()')
         await warroom.resize(size)
     }
 
@@ -17,80 +19,78 @@
 
         document.getElementById('get-client').addEventListener('click', async (e) => {
             const clientInformation = await warroom.getClientInformation()
-            appendResponse(clientInformation)
+            appendResponse(clientInformation, 'getClientInformation()')
         })    
         
         document.getElementById('get-subject').addEventListener('click', async (e) => {
             const currentSubject = await warroom.getSubject()
-            appendResponse(currentSubject)
+            appendResponse(currentSubject, 'getSubject()')
         })    
         
 
         document.getElementById('get-current-agent').addEventListener('click', async (e) => {
             const currentAgent = await warroom.getCurrentAgent()
-            appendResponse(currentAgent)
+            appendResponse(currentAgent, 'getCurrentAgent()')
         })    
 
         document.getElementById('get-current-thread').addEventListener('click', async (e) => {
             const currentThread = await warroom.getCurrentThread()
-            appendResponse(currentThread)
+            appendResponse(currentThread, 'getCurrentThread()')
         })    
 
         document.getElementById('get-current-case').addEventListener('click', async (e) => {
             const currentCase = await warroom.getCurrentCase()
-            appendResponse(currentCase)
+            appendResponse(currentCase, 'getCurrentCase()')
         })    
 
         document.getElementById('get-current-user').addEventListener('click', async (e) => {
             const currentUser = await warroom.getCurrentUser()
-            appendResponse(currentUser)
+            appendResponse(currentUser, 'getCurrentUser()')
         })    
 
 
         document.getElementById('get-user-case-history').addEventListener('click', async (e) => {
             const userCaseHistory = await warroom.getUserCaseHistory({socialIdList: ["wisesightofficial", "wisesighttwitter", "w!s3zight"]})
-            appendResponse(userCaseHistory)
+            appendResponse(userCaseHistory, 'getUserCaseHistory()')
         })    
 
-        // await warroom.closeMiniApp()
-
         warroom.onNewCase((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onNewCase()')
         })
 
         warroom.onAssignedCase((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onAssignedCase()')
         })
 
         warroom.onReply((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onReply()')
         })
 
         warroom.onReplyFormChange((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onReplyFormChange()')
         })
 
         warroom.onTagged((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onTagged()')
         })
 
         warroom.onCloseCase((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onCloseCase()')
         })
 
         warroom.onFilterChanged((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onFilterChanged()')
         })
 
         warroom.onAgentStatusChanged((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onAgentStatusChanged()')
         })
 
         warroom.onRefreshThread((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onRefreshThread()')
         })
 
         warroom.onFocusPost((d) => {
-            appendResponse(d)
+            appendResponse(d, 'onFocusPost()')
         })
     })()

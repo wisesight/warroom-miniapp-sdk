@@ -1,7 +1,7 @@
 {
   "name": "warrroom-miniapp-sdk",
-  "version": "2.1.0",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "dist/sdk.js",
   "repository": "https://github.com/wisesight/warrroom-miniapp-sdk.git",
   "author": "Best <suthidham.k@wisesight.com>",
   "license": "MIT",

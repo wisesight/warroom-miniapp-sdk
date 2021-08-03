@@ -567,10 +567,15 @@ warroom.onFocusPost((post) => {
 ```
 ### Other type methods
 #### warroom.resizeMiniApp()
+WARROOM จะย่อขยายหน้าจอ Miniapp ตามที่ได้เรียก โดยมี 3 รูปแบบ คือ 
+full = เป็นโหมดเต็มหน้าจอ
+half = โหมดครึ่งหน้าจอ
+taskpane = จะแสดง Miniapps เป็น tab อยู่ข้างๆ โดย taskpane เป็นโหมด default 
 ```javascript
 warroom.resizeMiniApp('full') // half, taskpane
 ```
 #### warroom.setReplyMessage()
+WARROOM จะเปลี่ยนข้อความในช่อง Reply ล่าสุดที่ได้ใช้งาน ให้เป็นข้อความดังที่เรียกผ่าน function 
 ```javascript
 warroom.setReplyMessage({ text: 'Message' })
 ```

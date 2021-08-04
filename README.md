@@ -1,29 +1,6 @@
 # Warroom Mini App SDK
 
-## What is miniapp
-WARROOM Miniapp คือสิ่งที่จะช่วยให้แอพพลิเคชั่นของท่านกับ WARROOM เชื่อมต่อกันได้ง่ายขึ้น โดยการนำ iframe ของแอพพลิชั่นมาฝังไว้ในตัว WARROOM โดยมีการเชื่อมต่อกันผ่านทาง SDK ของ WARROOM โดยแบ่งการเชื่อมต่อเป็น 3 ประเภท ดังนี้
-
-1. การดึงข้อมูลจากฝั่ง WARROOM โดยประกอบด้วยการดึงข้อมูลต่างๆคือ 
-    - 1.1 ดึงข้อมูลของ Client หรือผู้ใช้งาน
-    - 1.2 ดึงข้อมูลของ Subject กล่องข้อความที่กำลังเปิดใช้งานอยู่
-    - 1.3 ดึงข้อมูลของ Agent หรือคนทำงานที่กำลังทำอยู่
-    - 1.4 ดึงข้อมูลของ Thread หรือกระทู้ที่กำลังทำงานอยู่
-    - 1.5 ดึงข้อมูลของ Case หรือข้อความที่เรากำลังสนใจ หรือปัญหาที่ต้องแก้ไข
-    - 1.6 ดึงข้อมูลของ User หรือลูกค้าผู้ที่เรากำลังสนทนาด้วย
-    - 1.7 ดึงข้อมูลของ Case History หรือประวัติการแก้ไขปัญหารวมถึงเรื่องที่ได้รับในอดีต
-2. การส่งข้อมูลมาจาก Action ต่างๆของฝั่ง WARROOM โดยมีการส่งข้อมูลดังนี้
-    - 2.1 เมื่อมีการสร้างเคสใหม่เกิดขึ้น
-    - 2.2 เมื่อมีการมอบหมายงานเกิดขึ้น
-    - 2.3 เมื่อมีการตอบเกิดขึ้น
-    - 2.4 เมื่อมีการเปลี่ยนแปลงเกิดขึ้นที่กล่องตอบ
-    - 2.5 เมื่อมีการติดแท็กลงบนโพสท์เกิดขึ้น
-    - 2.6 เมื่อมีการปิดเคสเกิดขึ้น
-    - 2.7 เมื่อมีการเปลี่ยนสเตตัสของ Agent ที่กำลังทำงานอยู่
-    - 2.8 เมื่อมีการ Refresh กระทู้ที่กำลังทำงาน
-    - 2.9 เมื่อมีการคลิกบนตัวโพสท์
-3. การส่งข้อมูลอื่นๆจากฝั่ง Miniapp ไปยัง WARROOM 
-    - 3.1 แก้ไขขนาดของ Miniapp ที่กำลังเปิดอยู่
-    - 3.2 แก้ไขหรือเปลี่ยนคำตอบของกล่องตอบที่กำลังใช้งานล่าสุด
+WARROOM Miniapp is an application helping your application easily connect with WARROOM by embedding the application’s iframe into WARROOM by connecting via WARROOM’s SDK. There are 3 connection types which are as follows.
 
 ## Development tools
 
@@ -44,8 +21,9 @@ yarn start
 ## Avaliable Methods
 
 ### Request type methods 
-
+Collecting the data from WARROOM which are as follows.
 #### warroom.getClientInformation()
+> Collecting the client or user’s data.
 ```javascript
 warroom.getClientInformation().then(client => {
     // {
@@ -55,6 +33,7 @@ warroom.getClientInformation().then(client => {
 })
 ```
 #### window.getSubject()
+> Collect the subject’s data from the message box currently in use.
 ```javascript
 warroom.getSubject().then(subject => {
     // {
@@ -68,6 +47,7 @@ warroom.getSubject().then(subject => {
 ```
 
 #### warroom.getCurrentAgent()
+> Collecting the data of the agent or person who is currently working
 ```javascript
 warroom.getCurrentAgent().then(agent => {
     // {
@@ -82,6 +62,7 @@ warroom.getCurrentAgent().then(agent => {
 ```
 
 #### warroom.getCurrentThread()
+> Collecting the data of the thread or subject which is currently active
 ```javascript
 warroom.getCurrentThread().then(thread => {
     // {
@@ -95,6 +76,7 @@ warroom.getCurrentThread().then(thread => {
 ```
 
 #### warroom.getCurrentCase()
+> Collecting the data of the case, messages you’re interested in or the problem that needs a solution.
 ```javascript
 warroom.getCurrentCase().then(thread => {
     // {
@@ -159,6 +141,7 @@ warroom.getCurrentCase().then(thread => {
 ```
 
 #### warroom.getCurrentUser()
+> Collecting the data of the user or client which we’re currently talking to.
 ```javascript
 warroom.getCurrentUser().then(user => {
     // {
@@ -173,6 +156,7 @@ warroom.getCurrentUser().then(user => {
 ```
 
 #### warroom.getUserCaseHistory()
+> Collecting the data of case history or the solution history including the matter that we received in the past.
 ```javascript
 warroom.getUserCaseHistory({socialIdList: ["wisesightofficial", "wisesighttwitter", "w!s3zight"]}).then(history => {
     // [
@@ -239,8 +223,9 @@ warroom.getUserCaseHistory({socialIdList: ["wisesightofficial", "wisesighttwitte
 ```
 -----------
 ### Event listeners type methods 
-
+Sending the data from actions in WARROOM which are as follows.
 #### warroom.onNewCase()
+> When creating a new case.
 ```javascript
 warroom.onNewCase((case) => {
     // {
@@ -305,6 +290,7 @@ warroom.onNewCase((case) => {
 })
 ```
 #### warroom.onAssignedCase()
+> When assigning a case.
 ```javascript
 warroom.onAssignedCase((case) => {
     // {
@@ -378,16 +364,19 @@ warroom.onAssignedCase((case) => {
 })
 ```
 #### warroom.onReply()
+> When answering a question.
 ```javascript
 warroom.onReply((message) => {
 })
 ```
 #### warroom.onReplyFormChange()
+> When there is an edit at the answer box.
 ```javascript
 warroom.onReplyFormChange((message) => {
 })
 ```
 #### warroom.onTagged()
+> When there is a tag attached on the post.
 ```javascript
 warroom.onTagged((case) => {
     // {
@@ -405,6 +394,7 @@ warroom.onTagged((case) => {
 })
 ```
 #### warroom.onCloseCase()
+> When closing the case.
 ```javascript
 warroom.onCloseCase((case) => {
     // {
@@ -531,24 +521,28 @@ warroom.onCloseCase((case) => {
 })
 ```
 #### warroom.onFilterChanged()
+
 ```javascript
 warroom.onFilterChanged((case) => {
     // { time: new Date() }
 })
 ```
 #### warroom.onAgentStatusChanged()
+> When changing the status of the agent who is currently working.
 ```javascript
 warroom.onAgentStatusChanged((status) => {
     // { status: 'online' }
 })
 ```
 #### warroom.onRefreshThread()
+> When refreshing the active thread.
 ```javascript
 warroom.onRefreshThread((status) => {
     // { time: new Date() }
 })
 ```
 #### warroom.onFocusPost()
+> When the post is clicked.
 ```javascript
 warroom.onFocusPost((post) => {
     // {
@@ -566,16 +560,14 @@ warroom.onFocusPost((post) => {
 })
 ```
 ### Other type methods
+Sending other data from Miniapp to WARROOM
 #### warroom.resizeMiniApp()
-WARROOM จะย่อขยายหน้าจอ Miniapp ตามที่ได้เรียก โดยมี 3 รูปแบบ คือ 
-full = เป็นโหมดเต็มหน้าจอ
-half = โหมดครึ่งหน้าจอ
-taskpane = จะแสดง Miniapps เป็น tab อยู่ข้างๆ โดย taskpane เป็นโหมด default 
+> Adjusting the size of currently active Miniapp.
 ```javascript
 warroom.resizeMiniApp('full') // half, taskpane
 ```
 #### warroom.setReplyMessage()
-WARROOM จะเปลี่ยนข้อความในช่อง Reply ล่าสุดที่ได้ใช้งาน ให้เป็นข้อความดังที่เรียกผ่าน function 
+> Editing or changing the answer in the latest used answer box.
 ```javascript
 warroom.setReplyMessage({ text: 'Message' })
 ```

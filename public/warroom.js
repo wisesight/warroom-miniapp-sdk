@@ -126,7 +126,7 @@ window.addEventListener("message", async (event) => {
                 setMessageToMiniApp('response-to:get:current-agent', mockdata.agent)
                 break;
             case 'get:current-user':
-                setMessageToMiniApp('response-to:get:current-user', mockdata.social_user)
+                setMessageToMiniApp('response-to:get:current-user', mockdata.social_user[0])
                 break;
             case 'get:user-case-history':
                 setMessageToMiniApp('response-to:get:user-case-history', mockdata.caseHistory)

@@ -6,7 +6,7 @@
   "author": "Best <suthidham.k@wisesight.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "build": "babel ./src/sdk.js --out-dir ./dist"
   },
   "dependencies": {

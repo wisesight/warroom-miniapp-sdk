@@ -25,7 +25,7 @@ async function loadMiniApp(){
     const miniAppUrl = document.getElementById('miniapp-url').value
     document.getElementById('mini-app-container').innerHTML = `<div id="loading" class="spinner-grow text-secondary" role="status" style="margin-top: 30px;">
     <span class="visually-hidden">Loading...</span>
-  </div><iframe id="mini-app" style="display:none;" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`
+  </div><iframe id="mini-app" class="offscreen" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`
    resizeMiniApp('taskpane');
 }
 
@@ -104,8 +104,8 @@ window.addEventListener("message", async (event) => {
         switch(event.data.event) {
             case 'status:init':
                 setMessageToMiniApp('response-to:status:init',{time: new Date()})
-                document.getElementById('mini-app').style.display = 'block'
                 document.getElementById('loading').style.display = 'none'
+                document.getElementById('mini-app').classList.remove('offscreen')
                 break;
             case 'send:set-reply-message':
                 document.getElementById('reply-text').value = event.data.payload.text

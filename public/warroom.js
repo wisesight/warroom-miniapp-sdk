@@ -85,10 +85,10 @@ function resizeMiniApp (size) {
     if (size !== 'close') {
         miniAppContainer.classList.remove("col-3")
         miniAppContainer.classList.remove("col-6")
-        miniAppContainer.classList.remove("col-11")
+        miniAppContainer.classList.remove("col-12")
     }
     if(size === 'full') {
-        miniAppContainer.classList.add("col-11")
+        miniAppContainer.classList.add("col-12")
     } else if(size === 'half') {
         miniAppContainer.classList.add("col-6")
     } else if(size === 'taskpane') {

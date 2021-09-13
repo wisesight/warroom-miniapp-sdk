@@ -20,7 +20,7 @@
   "agent": {
     "agent_id": 24,
     "agent_name": "Green Curry",
-    "agent_profile_picture": "https://s3-ap-southeast-1.amazonaws.com/warroom-sg/2a092c4d324951c3e3380579091b3ca5.jpg",
+    "agent_profile_picture": "https://pbs.twimg.com/profile_images/943136793771175936/Ehj3eIBY_400x400.jpg",
     "agent_employee_id": "User_01",
     "agent_client_id": 70,
     "agent_status": "active"
@@ -31,13 +31,13 @@
 		"displayname" : "Green Curry",
 		"social_id" : "503815916439094",
 		"type" : "facebook",
-		"url_picture" : "https:\/\/scontent-xsp1-2.xx.fbcdn.net\/v\/t1.6435-1\/cp0\/p50x50\/122049717_1843289972491675_2932438947154286782_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=dbb9e7&_nc_ohc=obPZLwa8j88AX-fVomy&_nc_oc=AQmNIakFi0muXTGzfMTjdGt6Bp3gwDR8981RP_t-UZg17o0eIpKELZRcef18REC9ONw&_nc_ht=scontent-xsp1-2.xx&oh=31da2bce48a98dee95ed49c7acc0c665&oe=61265890",
+		"url_picture" : "https://pbs.twimg.com/profile_images/1112848027050565633/G0F2EtMn_400x400.jpg",
 		"latest_fetch" : "2021-07-29T08:33:17Z"
 	},
   {
 		"id" : 10,
 		"displayname" : "Bean Curry",
-		"social_id" : "503815916439094",
+		"social_id" : "503815916439111",
 		"type" : "twitter",
 		"url_picture" : "https:\/\/twitter.com/pic/verygood.jpg",
 		"latest_fetch" : "2021-07-29T08:33:17Z"

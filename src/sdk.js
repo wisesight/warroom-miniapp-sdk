@@ -7,7 +7,7 @@ class Warroom {
         this.appId = ""
         this.urlParams = new URLSearchParams(window.location.search);
         this.mode = this.urlParams.get('mode');
-        this.verifyUrl = ""
+        this.verifyUrl = "https://miniapp-core.warroom.wisesight.com/token/verify"
     }
     
     postMessageToParent (eventName, payload) {

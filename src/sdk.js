@@ -44,8 +44,12 @@ class Warroom {
         this.appType = appType
 
         const token = this.urlParams.get('token');
-        
-        if(this.mode === 'production') {
+
+        if(this.mode === 'devtool') {
+            await this.sleep(3000)
+            this.appId = appId
+            this.token = token
+        } else {
             const verifyRespone = await fetch(this.verifyUrl,
                 {
                     headers: {
@@ -61,13 +65,7 @@ class Warroom {
                     this.token = token
                 }
         }
-
-        if(this.mode === 'devtool') {
-            await this.sleep(3000)
-            this.appId = appId
-            this.token = token
-        }
-
+        
         this.postMessageToParent('status:init', new Date())
         return new Promise ((resolve,reject) => {
 

@@ -57,7 +57,7 @@ class Warroom {
                     'Content-Type': 'application/json'
                     },
                     method: "POST",
-                    body: JSON.stringify({token: this.token, appId: appId})
+                    body: JSON.stringify({token: token})
                 })
         
                 if(verifyRespone.status === 200) {

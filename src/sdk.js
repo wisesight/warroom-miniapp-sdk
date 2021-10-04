@@ -7,7 +7,7 @@ class Warroom {
         this.appId = ""
         this.urlParams = new URLSearchParams(window.location.search);
         this.mode = this.urlParams.get('mode');
-        this.verifyUrl = ""
+        this.verifyUrl = "https://miniapp-core.warroom.wisesight.com/token/verify"
     }
     
     postMessageToParent (eventName, payload) {
@@ -44,8 +44,12 @@ class Warroom {
         this.appType = appType
 
         const token = this.urlParams.get('token');
-        
-        if(this.mode === 'production') {
+
+        if(this.mode === 'devtool') {
+            await this.sleep(3000)
+            this.appId = appId
+            this.token = token
+        } else {
             const verifyRespone = await fetch(this.verifyUrl,
                 {
                     headers: {
@@ -53,7 +57,7 @@ class Warroom {
                     'Content-Type': 'application/json'
                     },
                     method: "POST",
-                    body: JSON.stringify({token: this.token, appId: appId})
+                    body: JSON.stringify({token: token})
                 })
         
                 if(verifyRespone.status === 200) {
@@ -61,13 +65,7 @@ class Warroom {
                     this.token = token
                 }
         }
-
-        if(this.mode === 'devtool') {
-            await this.sleep(3000)
-            this.appId = appId
-            this.token = token
-        }
-
+        
         this.postMessageToParent('status:init', new Date())
         return new Promise ((resolve,reject) => {
 

@@ -15,7 +15,7 @@ yarn start
 ## Get start
 
 ```html
-<script src="/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wisesight/warroom-miniapp-sdk@main/dist/sdk.js"></script>
 ```
 -----------
 ## Avaliable Methods

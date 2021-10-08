@@ -43,7 +43,7 @@ async function loadMiniApp() {
     "mini-app-container"
   ).innerHTML = `<div id="loading" class="spinner-grow text-secondary" role="status" style="margin-top: 30px;">
     <span class="visually-hidden">Loading...</span>
-  </div><iframe id="mini-app" class="offscreen" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`;
+  </div><iframe id="mini-app" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`;
   resizeMiniApp("taskpane");
 }
 

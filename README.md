@@ -572,3 +572,24 @@ warroom.resizeMiniApp('full') // half, taskpane
 warroom.setReplyMessage({ text: 'Message' })
 ```
 -----------
+
+### Refernace
+> Possible return type of case channel
+- Pantip
+- Facebook
+- Tweet
+- FacebookInbox
+- PantipInbox
+- Website
+- Email
+- TwitterInbox
+- Instagram
+- Line
+- GoogleBusinessReview
+- GoogleBusinessQA
+- LineAccountConnect
+- WarroomConnectInbox
+- WarroomConnect
+- YouTube
+
+-----------

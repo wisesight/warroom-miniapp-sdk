@@ -7,7 +7,7 @@
     "subject_id": 11236,
     "subject_name": "Green Curry (Comment Page)",
     "subject_client_id": 70,
-    "subject_type": "facebook",
+    "subject_type": "Facebook",
     "subject_facebook_id": "503815916439094"
   },
   "thread": {
@@ -38,7 +38,7 @@
 		"id" : 10,
 		"displayname" : "Elon Curry",
 		"social_id" : "503815916439111",
-		"type" : "twitter",
+		"type" : "Tweet",
 		"url_picture" : "https://pbs.twimg.com/profile_images/1112848027050565633/G0F2EtMn_400x400.jpg",
 		"latest_fetch" : "2021-07-29T08:33:17Z"
 	},
@@ -46,7 +46,7 @@
 		"id" : 12,
 		"displayname" : "Test",
 		"social_id" : "5038159162222711",
-		"type" : "twitter",
+		"type" : "Tweet",
 		"url_picture" : "https://yt3.ggpht.com/PRXxJ7ncdBwg0Qay3SyJlR0GiU-QVjBMpYeDTl7w_qwvld32J3BaPsYdNBOWUo_9fGf54U1J2Q=s88-c-k-c0x00ffffff-no-rj",
 		"latest_fetch" : "2021-07-29T08:33:17Z"
 	}],

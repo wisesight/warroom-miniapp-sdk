@@ -148,7 +148,7 @@ warroom.getCurrentUser().then(user => {
     //     "id" : 10,
     //     "displayname" : "Bean Curry",
     //     "social_id" : "503815916439094",
-    //     "type" : "twitter",
+    //     "type" : "Twitter",
     //     "url_picture" : "https:\/\/twitter.com/pic/verygood.jpg",
     //     "latest_fetch" : "2021-07-29T08:33:17Z"
     // }

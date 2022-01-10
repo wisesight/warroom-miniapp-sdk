@@ -26,8 +26,6 @@ yarn start
 | getSubject           	|       ✅      	|                                                                                         	|
 | getCurrentAgent      	|       ✅      	|                                                                                         	|
 | getCurrentThread     	|       ✅      	|                                                                                         	|
-| getCurrentCase       	|       ❌      	| มีโค้ดเตรียมรอไว้แล้ว แต่ยังใช้งานไม่ได้เพราะยังไม่รู้ว่า Current Case คือ Case ไหนกันแน่ใน Thread Column 	|
-| getCurrentUser       	|       ❌      	| มีโค้ดเตรียมรอไว้แล้ว แต่ยังใช้งานไม่ได้เพราะยังไม่รู้ว่า Current User คือ User ไหนกันแน่ใน Thread Column 	|
 | getUserCaseHistory   	|       ✅      	| ทำงานได้ แต่ต้องส่ง socialIdList ใน payload มาให้ถูก                                          	|
 | onNewCase            	|       ✅      	|                                                                                         	|
 | onAssignedCase       	|       ✅      	|                                                                                         	|
@@ -40,7 +38,7 @@ yarn start
 | onRefreshThread      	|       ❌      	|                                                                                         	|
 | onFocusPost          	|       ✅      	|                                                                                         	|
 | resizeMiniApp        	|       ❌      	|                                                                                         	|
-| setReplyMessage      	|       ❌      	| มีโค้ดเตรียมรอไว้แล้ว แต่ยังใช้งานไม่ได้เพราะยังไม่รู้ว่าจะ Reply Post ไหนใน Thread Column             	|
+| setReplyMessage      	|       ❌      	|                                                                                       	|
 
 ### Request type methods 
 Collecting the data from WARROOM which are as follows.

@@ -20,25 +20,25 @@ yarn start
 -----------
 ## Avaliable Methods
 
-| Method               	| Is available 	| Note                                                                                    	|
-|----------------------	|:------------:	|-----------------------------------------------------------------------------------------	|
-| getClientInformation 	|       ✅      	|                                                                                         	|
-| getSubject           	|       ✅      	|                                                                                         	|
-| getCurrentAgent      	|       ✅      	|                                                                                         	|
-| getCurrentThread     	|       ✅      	|                                                                                         	|
-| getUserCaseHistory   	|       ✅      	| ทำงานได้ แต่ต้องส่ง socialIdList ใน payload มาให้ถูก                                          	|
-| onNewCase            	|       ✅      	|                                                                                         	|
-| onAssignedCase       	|       ✅      	|                                                                                         	|
-| onReply              	|       ❌      	|                                                                                         	|
-| onReplyFormChange    	|       ❌      	|                                                                                         	|
-| onTagged             	|       ✅      	|                                                                                         	|
-| onCloseCase          	|       ❌      	|                                                                                         	|
-| onFilterChanged      	|       ❌      	|                                                                                         	|
-| onAgentStatusChanged 	|       ❌      	|                                                                                         	|
-| onRefreshThread      	|       ❌      	|                                                                                         	|
-| onFocusPost          	|       ✅      	|                                                                                         	|
-| resizeMiniApp        	|       ❌      	|                                                                                         	|
-| setReplyMessage      	|       ❌      	|                                                                                       	|
+| Method               	| Is available on Woring page 	| Is available on Setting |
+|----------------------	|:---------------------------:	|:----------------------:|
+| getClientInformation 	|       ✅      	|         🚧    | 
+| getSubject           	|       ✅      	|         🚫  |
+| getCurrentAgent      	|       ✅      	|          🚧      |                                                                          
+| getCurrentThread     	|       ✅      	|          🚫     |                                                                            
+| getUserCaseHistory   	|       ✅      	|           🚫      |
+| onNewCase            	|       ✅      	|           🚫       |                                                                        
+| onAssignedCase       	|       ✅      	|           🚫       |                                                                        
+| onReply              	|       🚧     	 |           🚫       |                                                                       	
+| onReplyFormChange    	|       🚧       |            🚫       |                                                                      	
+| onTagged             	|       ✅      	|            🚫      |                                                                        
+| onCloseCase          	|       🚧       |            🚫      |                                                                       	
+| onFilterChanged      	|       🚧       |            🚫      |                                                                       	
+| onAgentStatusChanged 	|       🚧       |            🚫      |                                                                      	
+| onRefreshThread      	|       🚧       |            🚫      |                                                                       	
+| onFocusPost          	|       ✅      	|            🚫      |                                                                        
+| resizeMiniApp        	|       🚧       |            🚫      |                                                                       	
+| setReplyMessage      	|       🚧       |            🚫      |                                                                     	
 
 ### Request type methods 
 Collecting the data from WARROOM which are as follows.

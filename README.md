@@ -20,7 +20,7 @@ yarn start
 -----------
 ## Avaliable Methods
 
-| Method               	| Is available on Woring page 	| Is available on Setting |
+| Method               	| Is available on Working page 	| Is available on Setting |
 |----------------------	|:---------------------------:	|:----------------------:|
 | getClientInformation 	|       ✅      	|         🚧    | 
 | getSubject           	|       ✅      	|         🚫  |

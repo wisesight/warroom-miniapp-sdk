@@ -38,7 +38,9 @@ yarn start
 | onRefreshThread      	|       🚧       |            🚫      |                                                                       	
 | onFocusPost          	|       ✅      	|            🚫      |                                                                        
 | resizeMiniApp        	|       🚧       |            🚫      |                                                                       	
-| setReplyMessage      	|       🚧       |            🚫      |                                                                     	
+| setReplyMessage      	|       🚧       |            🚫      | 
+| getCurrentCases       |       🚧       |            🚫      |  
+| getCurrentUsers       |       🚧       |            🚫      |  
 
 ### Request type methods 
 Collecting the data from WARROOM which are as follows.

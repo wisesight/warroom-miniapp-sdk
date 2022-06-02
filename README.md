@@ -615,3 +615,9 @@ warroom.setReplyMessage({ text: 'Message' })
 - YouTube
 
 -----------
+
+### Build and Run Dockerfile
+```
+docker build -t dev-tools-app .
+docker run -dp 8009:3000 dev-tools-app
+```

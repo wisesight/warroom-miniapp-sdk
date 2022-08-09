@@ -22,9 +22,9 @@ yarn start
 
 | Method               	| Is available on Working page 	| Is available on Setting |
 |----------------------	|:---------------------------:	|:----------------------:|
-| getClientInformation 	|       ✅      	|         🚧    | 
+| getClientInformation 	|       ✅      	|         ✅   | 
 | getSubject           	|       ✅      	|         🚫  |
-| getCurrentAgent      	|       ✅      	|          🚧      |                                                                          
+| getCurrentAgent      	|       ✅      	|          ✅     |                                                                          
 | getCurrentThread     	|       ✅      	|          🚫     |                                                                            
 | getUserCaseHistory   	|       ✅      	|           🚫      |
 | onNewCase            	|       ✅      	|           🚫       |                                                                        

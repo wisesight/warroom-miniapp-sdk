@@ -1,4 +1,4 @@
-# Warroom Mini App SDK
+# WARROOM Mini App SDK
 
 WARROOM Miniapp is an application helping your application easily connect with WARROOM by embedding the application’s iframe into WARROOM by connecting via WARROOM’s SDK. There are 3 connection types which are as follows.
 
@@ -20,13 +20,13 @@ yarn start
 
 ---
 
-## Avaliable Methods
+## Available Methods
 
 | Method               | Is available on Working page | Is available on Setting |
 | -------------------- | :--------------------------: | :---------------------: |
-| getClientInformation |              ✅              |           🚧            |
+| getClientInformation |              ✅              |           ✅            |
 | getSubject           |              ✅              |           🚫            |
-| getCurrentAgent      |              ✅              |           🚧            |
+| getCurrentAgent      |              ✅              |           ✅            |
 | getCurrentThread     |              ✅              |           🚫            |
 | getUserCaseHistory   |              ✅              |           🚫            |
 | onNewCase            |              ✅              |           🚫            |

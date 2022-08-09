@@ -40,7 +40,7 @@ yarn start
 | resizeMiniApp        	|       🚧       |            🚫      |                                                                       	
 | setReplyMessage      	|       🚧       |            🚫      | 
 | getCurrentCases       |       🚧       |            🚫      |  
-| getCurrentUsers       |       🚧       |            🚫      |  
+| getCurrentUser       |       🚧       |            🚫      |  
 
 ### Request type methods 
 Collecting the data from WARROOM which are as follows.

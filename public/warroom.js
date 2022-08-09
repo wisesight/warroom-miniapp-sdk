@@ -1,5 +1,5 @@
 var mockdata = null;
-var token = makeid(20);
+var token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6NzAsImNsaWVudE5hbWUiOiJXSVNFU0lHSFQiLCJ1c2VySWQiOjEsInVzZXJOYW1lIjoiZGVtbyIsIm1pbmlhcHBJZCI6ImRlbW8jODI1MSIsIm1pbmlhcHBOYW1lIjoiZGVtbyIsImlhdCI6MTY2MDAyMTMzNiwiaXNzIjoid2Fycm9vbSJ9.tt1d8gwsEP8I6IWaq-uJp2QPN_RnkU3ES7ILNPdZAuu3dx6N66aj3sLjVt2Xt2kcaMT5iw_T6a3HrfOlDUrKH3KUiME3nBNvkrdrpbJNsJgIvRx_wf1dN3esRYumPoAuOqI3xx8MyR9aVJOzW1EMxm2qaZVXD4oXI564KzgDLTiATQTJVUgSxoZjEck7VzgDNlwQi1C4v615C5mVyMt8bHOncCzDgz_QPpFqo_QVd8rVXbQe6K0IOeEmPs7F8EvszkMeuMwz1HSKLsLLCf5FmIFmVok4xo3ebPiV31acbCu73j7m-Q8M1jRftLHn4vGv4yLWf5GaZODs7M3EoAuoDw';
 
 document.getElementById("load-miniapp").addEventListener("click", async () => {
   await loadMiniApp();
@@ -13,17 +13,6 @@ window.addEventListener("load", async () => {
   const mockDataResponse = await fetch("/mocked-data.json");
   mockdata = await mockDataResponse.json();
 });
-
-function makeid(length) {
-  var result = "";
-  var characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
 
 async function changeMode(type) {
   if (type === "taskpane") {
@@ -44,7 +33,6 @@ async function loadMiniApp() {
   ).innerHTML = `<div id="loading" class="spinner-grow text-secondary" role="status" style="margin-top: 30px;">
     <span class="visually-hidden">Loading...</span>
   </div><iframe id="mini-app" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`;
-  resizeMiniApp("taskpane");
 }
 
 async function setMessageToMiniApp(eventName, payload) {

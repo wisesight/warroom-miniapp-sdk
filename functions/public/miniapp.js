@@ -14,7 +14,7 @@
 
     (async () => {
 
-        applicationStatus = await warroom.init({ appType:'taskpane', appId: '117454667' })
+        applicationStatus = await warroom.init({ appType:'taskpane', appId: 'demo#8251' })
         document.getElementById('status').innerHTML = '<span class="badge rounded-pill bg-success">Ready</span>'
 
         document.getElementById('get-client').addEventListener('click', async (e) => {

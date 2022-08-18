@@ -42,6 +42,14 @@ yarn start
 | getCurrentCases       |       🚧       |            🚫      |  
 | getCurrentUser       |       🚧       |            🚫      |  
 
+### Init
+Init Application before use sdk
+```javascript
+warroom.init({ appType:'taskpane', appId: 'demo#8251' }).then((result) => {
+ // Complete init
+});
+```
+
 ### Request type methods 
 Collecting the data from WARROOM which are as follows.
 

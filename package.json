@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "build": "babel ./src/sdk.js --out-file ./prebuild/sdk-compiled.js && gulp"
+    "build": "babel ./functions/public/src/sdk.js --out-file ./prebuild/sdk-compiled.js && gulp"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.14.5",

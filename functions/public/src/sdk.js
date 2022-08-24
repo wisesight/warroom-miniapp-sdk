@@ -75,8 +75,8 @@ class Warroom {
       body: JSON.stringify({ token: token })
     });
     const verifyRes = await verifyReq.json();
-
-    if (verifyReq.status === 200 && appId === verifyRes.miniappId) {
+    // if (verifyReq.status === 200 && appId === verifyRes.miniappId) {
+    if (verifyReq.status === 200) {
       this.appId = appId;
       this.token = token;
     } else {

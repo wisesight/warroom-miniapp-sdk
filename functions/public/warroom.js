@@ -28,11 +28,12 @@ async function changeMode(type) {
 
 async function loadMiniApp() {
   const miniAppUrl = document.getElementById("miniapp-url").value;
+  const iframeSrc = miniAppUrl.includes("?") ? `${miniAppUrl}&token=${token}&mode=devtool` : `${miniAppUrl}?token=${token}&mode=devtool`;
   document.getElementById(
     "mini-app-container"
   ).innerHTML = `<div id="loading" class="spinner-grow text-secondary" role="status" style="margin-top: 30px;">
     <span class="visually-hidden">Loading...</span>
-  </div><iframe id="mini-app" src="${miniAppUrl}?token=${token}&mode=devtool"></iframe>`;
+  </div><iframe id="mini-app" src="${iframeSrc}"></iframe>`;
 }
 
 async function setMessageToMiniApp(eventName, payload) {

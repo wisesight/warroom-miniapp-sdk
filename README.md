@@ -29,16 +29,16 @@ yarn start
 | getUserCaseHistory   	|       ✅      	|           🚫      |
 | onNewCase            	|       ✅      	|           🚫       |                                                                        
 | onAssignedCase       	|       ✅      	|           🚫       |                                                                        
-| onReply              	|       🚧     	 |           🚫       |                                                                       	
+| onReply              	|       ✅     	 |           🚫       |                                                                       	
 | onReplyFormChange    	|       🚧       |            🚫       |                                                                      	
 | onTagged             	|       ✅      	|            🚫      |                                                                        
-| onCloseCase          	|       🚧       |            🚫      |                                                                       	
+| onCloseCase          	|       ✅       |            🚫      |                                                                       	
 | onFilterChanged      	|       🚧       |            🚫      |                                                                       	
 | onAgentStatusChanged 	|       🚧       |            🚫      |                                                                      	
 | onRefreshThread      	|       🚧       |            🚫      |                                                                       	
 | onFocusPost          	|       ✅      	|            🚫      |                                                                        
 | resizeMiniApp        	|       🚧       |            🚫      |                                                                       	
-| setReplyMessage      	|       🚧       |            🚫      | 
+| setReplyMessage      	|       ✅       |            🚫      | 
 | getCurrentCases       |       🚧       |            🚫      |  
 | getCurrentUser       |       🚧       |            🚫      |  
 

@@ -7,8 +7,7 @@ class Warroom {
     this.urlParams = new URLSearchParams(window.location.search);
     this.mode = this.urlParams.get("mode");
     if (this.mode === "devtool") {
-      this.verifyUrl =
-        "https://external-staging.warroom.wisesight.com:8888/token/verify";
+      this.verifyUrl = "https://external-staging.warroom.wisesight.com:8888/token/verify";
     } else {
       this.verifyUrl = "https://app.warroom.wisesight.com/token/verify";
     }
@@ -24,7 +23,7 @@ class Warroom {
           event: eventName,
           payload: payload,
           token: this.token,
-          appId: this.appId
+          appId: this.appId,
         },
         "*"
       );
@@ -37,19 +36,11 @@ class Warroom {
 
   handleMessageFromWarroom(event) {
     if (event.data.provider === "warroom") {
-      if (
-        (event.data.token !== this.token || this.token === "") &&
-        event.data.event !== "response-to:status:init"
-      ) {
+      if ((event.data.token !== this.token || this.token === "") && event.data.event !== "response-to:status:init") {
         throw Error("Authentication is not valid please init app before use");
       } else {
-        const eventName = event.data.event.replace(
-          "response-to",
-          "warroom-miniapp"
-        );
-        document.dispatchEvent(
-          new CustomEvent(eventName, { detail: event.data.payload })
-        );
+        const eventName = event.data.event.replace("response-to", "warroom-miniapp");
+        document.dispatchEvent(new CustomEvent(eventName, { detail: event.data.payload }));
       }
       if (this.mode !== "production") {
         console.info("[MINI APP]", event.data);
@@ -58,31 +49,30 @@ class Warroom {
   }
 
   async init({ appType, appId }) {
-    window.addEventListener(
-      "message",
-      this.handleMessageFromWarroom.bind(this)
-    );
+    window.addEventListener("message", this.handleMessageFromWarroom.bind(this));
     this.appType = appType;
 
     const token = this.urlParams.get("token");
 
-    const verifyReq = await fetch(this.verifyUrl, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      body: JSON.stringify({ token: token })
-    });
-    const verifyRes = await verifyReq.json();
-    // if (verifyReq.status === 200 && appId === verifyRes.miniappId) {
-    if (verifyReq.status === 200) {
-      this.appId = appId;
-      this.token = token;
-    } else {
-      return new Promise((resolve, reject) => {
-        reject(new Error("verify token failed or appId doesn't match"));
+    if (!this.mode || this.mode != "devtool") {
+      const verifyReq = await fetch(this.verifyUrl, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({ token: token }),
       });
+      const verifyRes = await verifyReq.json();
+      // if (verifyReq.status === 200 && appId === verifyRes.miniappId) {
+      if (verifyReq.status === 200) {
+        this.appId = appId;
+        this.token = token;
+      } else {
+        return new Promise((resolve, reject) => {
+          reject(new Error("verify token failed or appId doesn't match"));
+        });
+      }
     }
 
     this.postMessageToParent("status:init", new Date());

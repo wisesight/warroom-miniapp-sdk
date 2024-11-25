@@ -13,4 +13,13 @@ app.get("/miniapp", (req, res) => {
   res.sendFile("public/miniapp.html", {root: __dirname});
 });
 
-exports.app = functions.https.onRequest(app);
+
+
+app.listen(port,(err)=>{
+  if(err){
+    process.exit(1)
+  }
+  console.log('success!')
+})
+
+

@@ -37,7 +37,7 @@ jobs:
       - name: Extract the tag version
         id: extract_tag_version
         shell: bash
-        run: echo "tag_version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        run: echo "tag_version=${GITHUB_REF#refs/tags/}-devtool" >> $GITHUB_OUTPUT
 
       - name: Show current branch/github.ref
         run: |

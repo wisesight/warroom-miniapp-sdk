@@ -64,7 +64,7 @@ jobs:
           IMAGE_TAG: ${{ steps.extract_tag_version.outputs.tag_version }}
         run: |
           echo "ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}"
-          docker build -t  \
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
             --file ${{ env.DOCKER_FILE_PATH }} .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 

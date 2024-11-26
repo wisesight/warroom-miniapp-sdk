@@ -1,22 +1,23 @@
-const functions = require("firebase-functions");
-const express = require("express");
-const app = express();
 const port = process.env.PORT || 3000;
+const fastify = require('fastify');
+const app = fastify();
+const path = require('path');
+app.register(require('@fastify/static'), {
+  root: path.join(__dirname, '../public'),
+})
 
-app.use(express.static("public"));
-app.use(express.static("dist"));
-app.get("/", (req, res) => {
-  res.sendFile("public/warroom.html", {root: __dirname});
+
+app.get('/', function (req, reply) {
+  reply.sendFile("warroom.html", { root: path.join(__dirname, '../public') }) // serving path.join(__dirname, 'public', 'myHtml.html') directly
+})
+
+app.get("/miniapp", (req, reply) => {
+  reply.sendFile("miniapp.html", { root: path.join(__dirname, '../public') });
 });
 
-app.get("/miniapp", (req, res) => {
-  res.sendFile("public/miniapp.html", {root: __dirname});
-});
-
-
-
-app.listen(port,(err)=>{
-  if(err){
+app.listen({ port }, (err) => {
+  if (err) {
+    console.log(err)
     process.exit(1)
   }
   console.log('success!')

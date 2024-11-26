@@ -15,7 +15,7 @@ app.get("/miniapp", (req, reply) => {
   reply.sendFile("miniapp.html", { root: path.join(__dirname, '../public') });
 });
 
-app.listen({ port }, (err) => {
+app.listen({ port, host: '0.0.0.0' }, (err) => {
   if (err) {
     console.log(err)
     process.exit(1)

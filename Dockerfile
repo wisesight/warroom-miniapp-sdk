@@ -1,17 +1,16 @@
-FROM node:16-alpine
+FROM node:22-slim
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /miniapp
 
-WORKDIR /usr/src/app
+WORKDIR /miniapp
 
-COPY package.json /usr/src/app/
+COPY package.json /miniapp
+COPY package-lock.json /miniapp
 
-RUN yarn install 
+RUN npm install 
 
-COPY . /usr/src/app
-
-RUN yarn build
-
+COPY ./public /miniapp/public
+COPY ./src /miniapp/src
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "node", "/miniapp/src/index.js"]

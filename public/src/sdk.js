@@ -8,7 +8,7 @@ class Warroom {
     this.mode = this.urlParams.get("mode");
     if (this.mode === "devtool") {
       this.verifyUrl =
-        "https://external-staging.warroom.wisesight.com:8888/token/verify";
+        "https://miniapp.staging-warroom.wisesight.dev/token/verify";
     } else {
       this.verifyUrl = "https://app.warroom.wisesight.com/token/verify";
     }

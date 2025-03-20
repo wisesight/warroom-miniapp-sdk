@@ -6,7 +6,8 @@ class Warroom {
     this.appId = "";
     this.urlParams = new URLSearchParams(window.location.search);
     this.mode = this.urlParams.get("mode");
-    if (this.mode === "devtool") {
+    this.env = this.urlParams.get("env") || "staging";
+    if (this.mode === "devtool" && this.env !== 'production') {
       this.verifyUrl =
         "https://miniapp.staging-warroom.wisesight.dev/token/verify";
     } else {
